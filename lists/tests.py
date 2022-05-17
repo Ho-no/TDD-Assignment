@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.urls import resolve
 from matplotlib.pyplot import cla
 from lists.views import home_page
-from lists.item import Item
+from lists.models import Item
 
 # Create your tests here.
 
