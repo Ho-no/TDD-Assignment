@@ -1,4 +1,4 @@
-from time import time
+import time
 from selenium import webdriver
 import unittest
 from selenium.webdriver.common.keys import Keys
@@ -15,7 +15,7 @@ class NewVisitorTest(unittest.TestCase):
 
         #Edith has heard about a cool new online to-do app. She goes
         #to check out its homepage
-        self.browser.get('http://localhost:8000')
+        self.browser.get('http://localhost:8080')
 
         # She notices the page title and header mention to-do lists
         self.assertIn('To-Do', self.browser.title), 'Browser title was ' + self.browser.title
@@ -41,7 +41,8 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1: Buy peacock feathers' for row in rows)
+            any(row.text == '1: Buy peacock feathers' for row in rows),
+            "New to-do item did not appear in table"
         )
 
         # There is still a text box inviting her to add another item. She
